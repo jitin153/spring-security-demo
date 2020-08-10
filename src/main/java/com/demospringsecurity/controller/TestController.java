@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.demospringsecurity.model.Message;
 import com.demospringsecurity.model.Notification;
-import com.demospringsecurity.model.User;
+import com.demospringsecurity.model.UserBO;
 
 @RestController
 //@RequestMapping("/api")
@@ -48,7 +48,7 @@ public class TestController {
 	}
 	
 	@PostMapping("/auth/admin/user") //--Should be accessible by anyone. No login required.
-	public String user(@RequestBody User user) {
+	public String user(@RequestBody UserBO user) {
 		return "Welcome admin...";
 	}
 	
