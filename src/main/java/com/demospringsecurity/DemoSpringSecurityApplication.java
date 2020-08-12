@@ -2,9 +2,9 @@ package com.demospringsecurity;
 
 import javax.sql.DataSource;
 
-import org.apache.ibatis.session.SqlSessionFactory;
+/*import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
-import org.mybatis.spring.annotation.MapperScan;
+import org.mybatis.spring.annotation.MapperScan;*/
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,7 +19,7 @@ import org.springframework.core.io.ClassPathResource;
 @Configuration
 @ComponentScan(basePackages = { "com.demospringsecurity.*" })
 @EnableAutoConfiguration
-@MapperScan(basePackages = "com.demospringsecurity.dao")
+//@MapperScan(basePackages = "com.demospringsecurity.dao")
 public class DemoSpringSecurityApplication extends SpringBootServletInitializer{
 
 	public static void main(String[] args) {
@@ -31,11 +31,11 @@ public class DemoSpringSecurityApplication extends SpringBootServletInitializer{
 		return builder.sources(DemoSpringSecurityApplication.class);
 	}
 
-	@Bean
+	/*@Bean
 	public SqlSessionFactory SqlSessionFactory(DataSource dataSource) throws Exception {
 		final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource);
 		sessionFactory.setConfigLocation(new ClassPathResource("mapConfig.xml"));
 		return sessionFactory.getObject();
-	}
+	}*/
 }

@@ -9,12 +9,12 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.demo</groupId>
-	<artifactId>demo-spring-security</artifactId>
+	<artifactId>spring-security-jwt-demo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo-spring-security</name>
+	<name>spring-security-jwt-demo</name>
 	<description>Demo project for Spring Boot</description>
 	<packaging>war</packaging>
-	
+
 	<properties>
 		<java.version>1.8</java.version>
 	</properties>
@@ -28,7 +28,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-<dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
+		</dependency>
+		<!-- <dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>5.1.38</version>
@@ -52,13 +57,9 @@
 					<artifactId>tomcat.jdbc</artifactId>
 				</exclusion>
 			</exclusions>
-		</dependency>
-		<!-- <dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-			<scope>runtime</scope>
-			<optional>true</optional>
 		</dependency> -->
+		<!-- <dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-devtools</artifactId> 
+			<scope>runtime</scope> <optional>true</optional> </dependency> -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -70,11 +71,8 @@
 			<version>2.19.0</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- <dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
-			<scope>test</scope>
-		</dependency> -->
+		<!-- <dependency> <groupId>org.springframework.security</groupId> <artifactId>spring-security-test</artifactId> 
+			<scope>test</scope> </dependency> -->
 	</dependencies>
 
 	<build>
@@ -83,26 +81,11 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-<!-- 			<plugin>
-				<artifactId>maven-resources-plugin</artifactId>
-				<executions>
-					<execution>
-						<id>copy-resources</id>
-						<phase>validate</phase>
-						<goals>
-							<goal>copy-resources</goal>
-						</goals>
-						<configuration>
-							<outputDirectory>${build.directory}/classes/static/</outputDirectory>
-							<resources>
-								<resource>
-									<directory>../prajit-app-ui/dist/prajit-app-ui</directory>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin> -->
+			<!-- <plugin> <artifactId>maven-resources-plugin</artifactId> <executions> 
+				<execution> <id>copy-resources</id> <phase>validate</phase> <goals> <goal>copy-resources</goal> 
+				</goals> <configuration> <outputDirectory>${build.directory}/classes/static/</outputDirectory> 
+				<resources> <resource> <directory>../prajit-app-ui/dist/prajit-app-ui</directory> 
+				</resource> </resources> </configuration> </execution> </executions> </plugin> -->
 		</plugins>
 	</build>
 

@@ -11,7 +11,6 @@ import com.demospringsecurity.model.Notification;
 import com.demospringsecurity.model.UserBO;
 
 @RestController
-//@RequestMapping("/api")
 public class TestController {
 
 	//@RolesAllowed({"USER","ADMIN"})

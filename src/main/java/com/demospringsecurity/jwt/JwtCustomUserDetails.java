@@ -1,27 +1,28 @@
-/*package com.demospringsecurity.security;
+package com.demospringsecurity.jwt;
 
 import java.util.Collection;
+import java.util.Date;
 import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.demospringsecurity.model.User;
+import com.demospringsecurity.model.UserBO;
 
-public class customUserDetails implements UserDetails {
+public class JwtCustomUserDetails implements UserDetails {
 
 	private static final long serialVersionUID = 5155720064139820502L;
+	
+	private UserBO user;
 
-	private User user;
-
-	public customUserDetails(User user) {
-		this.user = user;
+	public JwtCustomUserDetails(UserBO user) {
+		this.user=user;
 	}
-
+	
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role)).collect(Collectors.toList());
+		return user.getRoles().stream().map(role->new SimpleGrantedAuthority(role)).collect(Collectors.toList());
 	}
 
 	@Override
@@ -51,16 +52,15 @@ public class customUserDetails implements UserDetails {
 
 	@Override
 	public boolean isEnabled() {
-		return user.getStatus().equalsIgnoreCase("ACTIVE") ? true : false;
+		return true;// user.getStatus().equalsIgnoreCase("ACTIVE") ? true :false;
 	}
-
+	
 	public String getFullName() {
-		return user.getPassword();
+		return user.getFullName();
 	}
-
+	
 	public Long getUserId() {
 		return user.getUserId();
 	}
 
 }
-*/
