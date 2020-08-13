@@ -16,21 +16,21 @@ public class ServiceDao {
 			user.setEmail("narendra@gmail.com");
 			user.setFullName("Narendra");
 			/*
-			 * Password is encrypted. Actual password is : Narendra
+			 * Password is encrypted using Bcrypt. Actual password is : Narendra
 			 */
 			user.setPassword("$2a$10$IbkLKhDNVTyk0evioojFOu3y5YzpVd9Nh039nyuV1guNZqXEGgwm.");
 			Set<String> roles = new HashSet<>();
-			roles.add("USER");
+			roles.add("ROLE_USER");
 			user.setRoles(roles);
 		} else if(email.equalsIgnoreCase("jitin@gmail.com")) {
 			user.setEmail("jitin@gmail.com");
 			user.setFullName("Jitin");
 			/*
-			 * Password is encrypted. Actual password is : Jitin
+			 * Password is encrypted using Bcrypt. Actual password is : Jitin
 			 */
 			user.setPassword("$2a$10$UGy5.vjQ59GjGVjokulzi.nsS8tCq4LwKKWurs.sOyU.mQEYSTWt.");
 			Set<String> roles = new HashSet<>();
-			roles.add("ADMIN");
+			roles.add("ROLE_ADMIN");
 			user.setRoles(roles);
 		}
 		return user;

@@ -52,7 +52,7 @@ public class JwtCustomUserDetails implements UserDetails {
 
 	@Override
 	public boolean isEnabled() {
-		return true;// user.getStatus().equalsIgnoreCase("ACTIVE") ? true :false;
+		return true;
 	}
 	
 	public String getFullName() {

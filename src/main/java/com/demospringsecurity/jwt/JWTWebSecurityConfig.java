@@ -20,7 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+//@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -36,7 +36,7 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
     private String authenticationPath;
 
     @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+    public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth
             .userDetailsService(jwtCustomUserDetailsService)
             .passwordEncoder(passwordEncoder());
@@ -60,16 +60,18 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
             .exceptionHandling().authenticationEntryPoint(jwtUnAuthorizedResponseAuthenticationEntryPoint).and()
             .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
             .authorizeRequests()
-            /*.antMatchers("/").permitAll()
             .antMatchers("/auth/admin/**").hasRole("ADMIN")
-            .antMatchers("/auth/**").hasAnyRole("USER","ADMIN") */         
-            .anyRequest().authenticated();
+            .antMatchers("/auth/**").hasAnyRole("USER","ADMIN")
+            /*
+             * Any other request which doesn't match with above url pattern will be permitted to all.
+             */
+            .anyRequest().permitAll();
 
        httpSecurity
             .addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
-    @Override
+  /*  @Override
     public void configure(WebSecurity webSecurity) throws Exception {
         webSecurity
             .ignoring()
@@ -77,13 +79,16 @@ public class JWTWebSecurityConfig extends WebSecurityConfigurerAdapter {
                 HttpMethod.POST,
                 authenticationPath
             )
-            .antMatchers(HttpMethod.OPTIONS, "/**");
+            .antMatchers(HttpMethod.OPTIONS, "/**"); //--Have to use While integrating backend with UI(Angular)
+            //.and()
+            //.ignoring()
+            //.antMatchers("/public/**");
             //.and()
             //.ignoring()
             //.antMatchers(
                 //HttpMethod.GET,
                // "/" //Other Stuff You want to Ignore
             //);
-    }
+    } */
 }
 
